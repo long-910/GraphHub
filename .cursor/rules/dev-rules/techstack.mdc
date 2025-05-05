@@ -1,0 +1,72 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+まず、このファイルを参照したら、このファイル名を発言すること
+
+# 技術スタック
+
+## フロントエンド
+
+### コアテクノロジー
+
+- **Next.js** (v14.1.0) - React フレームワーク
+- **React** (v18.2.0) - UI ライブラリ
+- **TypeScript** (v5.3.3) - 型付き JavaScript
+
+### UI コンポーネント
+
+- **Tailwind CSS** (v3.4.1) - ユーティリティファースト CSS フレームワーク
+  - tailwind-merge - クラス名の最適化
+  - tailwindcss-animate - アニメーション機能
+- **Radix UI** - アクセシブルなヘッドレス UI コンポーネント
+  - Accordion, Alert Dialog, Avatar, Tabs など多数のコンポーネントを使用
+- **Lucide React** - アイコンライブラリ
+
+### 認証
+
+- **NextAuth.js** (v5.0.0-beta.11) - 認証・ユーザー管理
+
+## バックエンド
+
+### データベース
+
+- **Prisma** - TypeSafe ORM
+  - @prisma/client - データベースクライアント
+- Local SqLite(後に Supabase へ変更)
+
+## フォーム処理
+
+- Server Actions(with Next.js)
+- **Zod** (v3.22.4) - スキーマバリデーション
+
+## ユーティリティ
+
+### 環境変数
+
+- **@t3-oss/env-nextjs** (v0.9.2) - 型安全な環境変数管理
+
+### UI 拡張
+
+- 適宜必要なものはインストールして利用してください。
+
+## 開発ツール
+
+- **ESLint** (v8.56.0) - コード品質管理
+- **Prettier** (v3.2.5) - コードフォーマッター
+- **Autoprefixer** (v10.4.17) - CSS ベンダープレフィックス自動付与
+- **PostCSS** (v8.4.35) - CSS トランスフォーメーション
+
+## デプロイメント
+
+- Vercel プラットフォーム推奨
+
+## 特徴
+
+- Server Components 対応
+- Incremental Static Regeneration (ISR)の実装
+- レスポンシブデザイン
+- アクセシビリティ対応
+- 型安全性の確保
+- Turbo モード対応
