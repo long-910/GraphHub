@@ -1,35 +1,36 @@
-import Link from "next/link";
+import { UsernameForm } from "./_components/UsernameForm";
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background p-4">
+      {/* Ambient background glows */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/4 top-1/4 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/10 blur-[100px]" />
+        <div className="absolute right-1/4 bottom-1/4 h-[480px] w-[480px] translate-x-1/2 translate-y-1/2 rounded-full bg-purple-600/10 blur-[100px]" />
+      </div>
+
+      <div className="container relative flex max-w-lg flex-col items-center gap-10">
+        {/* Hero text */}
+        <div className="flex flex-col items-center gap-3 text-center">
+          <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl">
+            <span className="gradient-text">Graph</span>
+            <span style={{ color: "#4ade80" }}>Hub</span>
+          </h1>
+          <p style={{ color: "#8b949e" }} className="text-base">
+            GitHub ユーザー名を入力して、フォロワー関係を可視化
+          </p>
+        </div>
+
+        {/* Form card */}
+        <div
+          className="w-full rounded-2xl p-6"
+          style={{
+            background: "#161b22",
+            border: "1px solid #21262d",
+            boxShadow: "0 0 40px rgba(0,0,0,0.4)",
+          }}
+        >
+          <UsernameForm />
         </div>
       </div>
     </main>

@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, .dark {
+  --background: 13 17 23;          /* #0d1117 */
+  --foreground: 240 246 252;       /* #f0f6fc */
+  --card: 22 27 34;                /* #161b22 */
+  --card-foreground: 240 246 252;
+  --popover: 22 27 34;
+  --popover-foreground: 240 246 252;
+  --primary: 88 166 255;           /* #58a6ff — GitHub blue */
+  --primary-foreground: 13 17 23;
+  --secondary: 33 38 45;           /* #21262d */
+  --secondary-foreground: 240 246 252;
+  --muted: 33 38 45;
+  --muted-foreground: 139 148 158; /* #8b949e */
+  --accent: 33 38 45;
+  --accent-foreground: 240 246 252;
+  --destructive: 248 81 73;        /* #f85149 */
+  --destructive-foreground: 255 255 255;
+  --border: 33 38 45;              /* #21262d */
+  --input: 33 38 45;
+  --ring: 88 166 255;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Subtle dot-grid texture — adds depth without distraction */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  /* Gradient text utility */
+  .gradient-text {
+    background: linear-gradient(135deg, #60a5fa 0%, #c084fc 60%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Smooth spinner */
+@keyframes spin-smooth {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  animation: spin-smooth 0.8s linear infinite;
+}
