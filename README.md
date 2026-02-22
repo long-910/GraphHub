@@ -34,7 +34,7 @@
 │   ┌─────────────────────────────────┐   │
 │   │  ユーザー名                     │   │
 │   │  ┌───────────────────────────┐  │   │
-│   │  │ torvalds                  │  │   │
+│   │  │ your-github-username      │  │   │
 │   │  └───────────────────────────┘  │   │
 │   │                                 │   │
 │   │  ┌───────────────────────────┐  │   │
@@ -46,7 +46,7 @@
 
 1. ブラウザで `http://localhost:3000` を開く
 2. GitHub アカウントでログイン
-3. 調べたい GitHub ユーザー名を入力（例: `torvalds`）
+3. 調べたい GitHub ユーザー名を入力
 4. **「相関図を表示」** をクリック
 
 ---
@@ -59,13 +59,13 @@
 │                                    [PNG] [JSON] [CSV]    │  ← エクスポート
 ├──────────────────────────────────────────────────────────┤
 │                                                          │
-│      (alice)                                             │
+│      (user-a)                                            │
 │        ↑ ━━━━━━━━ 紫(⇔) ━━━━━━━━━┐                      │
-│        │                    (torvalds)                   │  ← 中央ノード
+│        │                    (you)                        │  ← 中央ノード
 │        │                          │                      │    （大きめ）
-│      (bob) ─── 青(←) ────────────┘                      │
+│      (user-b) ─── 青(←) ─────────┘                      │
 │                                   │                      │
-│                                   └── 緑(→) ── (carol)   │
+│                                   └── 緑(→) ── (user-c)  │
 │                                                          │
 │                                          ┌──────────┐   │
 │                                          │ 凡例      │   │  ← 凡例
@@ -118,7 +118,7 @@
 
 ```json
 {
-  "user": "torvalds",
+  "user": "your-github-username",
   "generated": "2026-02-22T12:00:00Z",
   "summary": {
     "total_nodes": 45,
@@ -127,8 +127,8 @@
     "following_only": 12
   },
   "edges": [
-    { "from": "torvalds", "to": "alice", "relationship": "mutual" },
-    { "from": "bob", "to": "torvalds", "relationship": "follower" }
+    { "from": "your-github-username", "to": "user-a", "relationship": "mutual" },
+    { "from": "user-b", "to": "your-github-username", "relationship": "follower" }
   ]
 }
 ```

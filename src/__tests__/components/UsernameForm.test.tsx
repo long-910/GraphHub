@@ -26,21 +26,21 @@ describe("UsernameForm", () => {
     const user = userEvent.setup();
     render(<UsernameForm />);
 
-    await user.type(screen.getByLabelText("ユーザー名"), "torvalds");
+    await user.type(screen.getByLabelText("ユーザー名"), "testuser");
     await user.click(screen.getByRole("button", { name: "相関図を表示" }));
 
     expect(mockPush).toHaveBeenCalledOnce();
-    expect(mockPush).toHaveBeenCalledWith("/graph/torvalds");
+    expect(mockPush).toHaveBeenCalledWith("/graph/testuser");
   });
 
   it("trims surrounding whitespace before navigating", async () => {
     const user = userEvent.setup();
     render(<UsernameForm />);
 
-    await user.type(screen.getByLabelText("ユーザー名"), "  octocat  ");
+    await user.type(screen.getByLabelText("ユーザー名"), "  testuser2  ");
     await user.click(screen.getByRole("button", { name: "相関図を表示" }));
 
-    expect(mockPush).toHaveBeenCalledWith("/graph/octocat");
+    expect(mockPush).toHaveBeenCalledWith("/graph/testuser2");
   });
 
   it("does not navigate when the input is empty", async () => {
@@ -57,8 +57,8 @@ describe("UsernameForm", () => {
     render(<UsernameForm />);
 
     const input = screen.getByLabelText("ユーザー名");
-    await user.type(input, "linus");
+    await user.type(input, "testuser");
 
-    expect(input).toHaveValue("linus");
+    expect(input).toHaveValue("testuser");
   });
 });

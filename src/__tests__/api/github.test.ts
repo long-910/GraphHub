@@ -37,7 +37,7 @@ import { GET as followersGET } from "~/app/api/github/followers/[username]/route
 import { GET as followingGET } from "~/app/api/github/following/[username]/route";
 
 // ---------------------------------------------------------------------------
-// Fixtures
+// Fixtures — fictional users only, not based on any real person
 // ---------------------------------------------------------------------------
 
 const AUTHED_SESSION: Session = {
@@ -52,13 +52,13 @@ const AUTHED_SESSION: Session = {
 };
 
 const MOCK_GITHUB_USER = {
-  login: "torvalds",
-  avatar_url: "https://avatars.githubusercontent.com/u/1024025",
-  name: "Linus Torvalds",
+  login: "testuser",
+  avatar_url: "https://example.com/avatars/testuser.png",
+  name: "Test User",
 };
 
 const MOCK_FOLLOWERS = [
-  { login: "alice", avatar_url: "https://avatars.githubusercontent.com/u/1" },
+  { login: "user-a", avatar_url: "https://example.com/avatars/user-a.png" },
 ];
 
 type RouteParams = { params: { username: string } };
@@ -80,8 +80,8 @@ describe("GET /api/github/user/:username", () => {
     mockAuth.mockResolvedValue(null);
 
     const res = await getUserGET(
-      makeRequest("http://localhost/api/github/user/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/user/testuser"),
+      makeParams("testuser"),
     );
 
     expect(res.status).toBe(401);
@@ -97,13 +97,13 @@ describe("GET /api/github/user/:username", () => {
     });
 
     const res = await getUserGET(
-      makeRequest("http://localhost/api/github/user/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/user/testuser"),
+      makeParams("testuser"),
     );
 
     expect(res.status).toBe(200);
     const body = await res.json();
-    expect(body.login).toBe("torvalds");
+    expect(body.login).toBe("testuser");
   });
 
   it("sends the access token as Bearer auth to GitHub", async () => {
@@ -115,12 +115,12 @@ describe("GET /api/github/user/:username", () => {
     global.fetch = fetchMock;
 
     await getUserGET(
-      makeRequest("http://localhost/api/github/user/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/user/testuser"),
+      makeParams("testuser"),
     );
 
     expect(fetchMock).toHaveBeenCalledWith(
-      "https://api.github.com/users/torvalds",
+      "https://api.github.com/users/testuser",
       expect.objectContaining({
         headers: expect.objectContaining({
           Authorization: "Bearer gh-test-token",
@@ -155,8 +155,8 @@ describe("GET /api/github/followers/:username", () => {
     mockAuth.mockResolvedValue(null);
 
     const res = await followersGET(
-      makeRequest("http://localhost/api/github/followers/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/followers/testuser"),
+      makeParams("testuser"),
     );
 
     expect(res.status).toBe(401);
@@ -171,8 +171,8 @@ describe("GET /api/github/followers/:username", () => {
     global.fetch = fetchMock;
 
     await followersGET(
-      makeRequest("http://localhost/api/github/followers/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/followers/testuser"),
+      makeParams("testuser"),
     );
 
     expect(fetchMock).toHaveBeenCalledWith(
@@ -189,14 +189,14 @@ describe("GET /api/github/followers/:username", () => {
     });
 
     const res = await followersGET(
-      makeRequest("http://localhost/api/github/followers/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/followers/testuser"),
+      makeParams("testuser"),
     );
 
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(Array.isArray(body)).toBe(true);
-    expect(body[0].login).toBe("alice");
+    expect(body[0].login).toBe("user-a");
   });
 });
 
@@ -213,8 +213,8 @@ describe("GET /api/github/following/:username", () => {
     mockAuth.mockResolvedValue(null);
 
     const res = await followingGET(
-      makeRequest("http://localhost/api/github/following/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/following/testuser"),
+      makeParams("testuser"),
     );
 
     expect(res.status).toBe(401);
@@ -229,8 +229,8 @@ describe("GET /api/github/following/:username", () => {
     global.fetch = fetchMock;
 
     await followingGET(
-      makeRequest("http://localhost/api/github/following/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/following/testuser"),
+      makeParams("testuser"),
     );
 
     expect(fetchMock).toHaveBeenCalledWith(
@@ -244,8 +244,8 @@ describe("GET /api/github/following/:username", () => {
     global.fetch = vi.fn().mockResolvedValue({ ok: false, status: 403 });
 
     const res = await followingGET(
-      makeRequest("http://localhost/api/github/following/torvalds"),
-      makeParams("torvalds"),
+      makeRequest("http://localhost/api/github/following/testuser"),
+      makeParams("testuser"),
     );
 
     expect(res.status).toBe(403);

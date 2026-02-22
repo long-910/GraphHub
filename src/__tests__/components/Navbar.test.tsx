@@ -66,21 +66,21 @@ vi.mock("next/link", () => ({
 }));
 
 // ---------------------------------------------------------------------------
-// Fixtures
+// Fixtures — fictional users only, not based on any real person
 // ---------------------------------------------------------------------------
 
 const SESSION_WITH_IMAGE: Session = {
   user: {
     id: "1",
-    name: "Linus Torvalds",
-    email: "linus@example.com",
-    image: "https://avatars.githubusercontent.com/u/1024025",
+    name: "Test User",
+    email: "testuser@example.com",
+    image: "https://example.com/avatars/testuser.png",
   },
   expires: "2099-01-01",
 };
 
 const SESSION_WITHOUT_IMAGE: Session = {
-  user: { id: "2", name: "Octocat", email: null, image: null },
+  user: { id: "2", name: "Test User 2", email: null, image: null },
   expires: "2099-01-01",
 };
 
@@ -111,7 +111,7 @@ describe("Navbar", () => {
       update: vi.fn(),
     });
     render(<Navbar />);
-    expect(screen.getByText("Linus Torvalds")).toBeInTheDocument();
+    expect(screen.getByText("Test User")).toBeInTheDocument();
   });
 
   it("shows avatar image when session provides one", () => {
@@ -122,7 +122,7 @@ describe("Navbar", () => {
     });
     render(<Navbar />);
     expect(
-      screen.getByRole("img", { name: "Linus Torvalds" }),
+      screen.getByRole("img", { name: "Test User" }),
     ).toHaveAttribute("data-src", SESSION_WITH_IMAGE.user.image);
   });
 
