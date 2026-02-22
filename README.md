@@ -10,6 +10,12 @@
 
 ---
 
+## デモ
+
+![GraphHub Demo](docs/demo.gif)
+
+---
+
 ## 主な機能
 
 - **GitHub OAuth ログイン** — NextAuth.js でログイン。認証済みトークンで GitHub API を 5,000 req/h で利用可能

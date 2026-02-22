@@ -72,7 +72,10 @@ export function NetworkGraph({ username }: NetworkGraphProps) {
         networkRef.current = null;
       }
 
-      const nodesArray = buildNodes(username, userData, followers, following);
+      const nodesArray = buildNodes(username, userData, followers, following).map((node) => ({
+        ...node,
+        image: `/api/proxy/avatar?url=${encodeURIComponent(node.image)}`,
+      }));
       const edgesArray = buildEdges(username, followers, following);
       allEdgesRef.current = edgesArray;
 
@@ -323,7 +326,7 @@ export function NetworkGraph({ username }: NetworkGraphProps) {
       <div
         ref={containerRef}
         className="h-full w-full rounded-lg"
-        style={{ background: "#0d1117" }}
+        style={{ background: "#07101e" }}
       />
     </div>
   );

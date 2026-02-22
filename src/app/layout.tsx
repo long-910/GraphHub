@@ -11,7 +11,9 @@ const inter = Inter({
 export const metadata = {
   title: "GraphHub",
   description: "GitHubのフォロー関係を可視化",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({

@@ -18,7 +18,7 @@ export default async function GraphPage({
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-0.5">
             <h1 className="text-xl font-bold" style={{ color: "#f0f6fc" }}>
-              <span className="gradient-text">{params.username}</span>
+              <span style={{ color: "#79c0ff" }}>{params.username}</span>
               <span style={{ color: "#8b949e" }} className="ml-2 text-base font-normal">
                 のフォロワー関係
               </span>
@@ -38,7 +38,7 @@ export default async function GraphPage({
           className="h-[calc(100vh-7rem)] w-full rounded-2xl"
           style={{
             border: "1px solid #21262d",
-            background: "#161b22",
+            background: "#0c1524",
             boxShadow: "0 0 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04)",
             overflow: "hidden",
           }}
